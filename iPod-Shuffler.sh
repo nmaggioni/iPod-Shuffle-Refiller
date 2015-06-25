@@ -21,7 +21,7 @@ mkdir "${ipod_path}"/iPod_Control/Speakable
 echo "[#] Folder structure generated    "
 
 echo -e "[*] Copying new files to the iPod..."
-minfree=51200
+minfree=76800
 freespace=$(df "${ipod_path}" | awk 'FNR>1{print $4}')
 while [ $freespace -gt $minfree ]; do
     path="$(shuf -zen1 ~/Musica/*.mp3)"
