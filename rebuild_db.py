@@ -216,7 +216,7 @@ class TrackHeader(Record):
         track_chunk = ""
         for i in self.tracks:
             track = Track(self)
-            print "[*] Adding track", i
+            print "    [*] Adding track", i
             track.populate(i)
             output += struct.pack("I", self.base_offset + self["total_length"] + len(track_chunk))
             track_chunk += track.construct()
@@ -311,7 +311,7 @@ class PlaylistHeader(Record):
     def construct(self, tracks): #pylint: disable-msg=W0221
         # Build the master list
         masterlist = Playlist(self)
-        print "[+] Adding master playlist"
+        print "    [+] Adding master playlist"
         masterlist.set_master(tracks)
         chunks = [masterlist.construct(tracks)]
 
@@ -319,7 +319,7 @@ class PlaylistHeader(Record):
         playlistcount = 1
         for i in self.lists:
             playlist = Playlist(self)
-            print "[+] Adding playlist", i
+            print "    [+] Adding playlist", i
             playlist.populate(i)
             construction = playlist.construct(tracks)
             if playlist["number_of_songs"] > 0:
